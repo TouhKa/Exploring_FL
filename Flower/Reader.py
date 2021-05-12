@@ -8,7 +8,11 @@ class Reader():
     self.__file_name = file_name
     self.__num_of_user:int = 1
     self.__num_of_classes = 0
-    seperator = file_name.index(".")
+    try:
+      seperator = file_name.index(".")
+    except:
+      logging.warning("substring not found. Check type of input file")
+      exit()
     file_type = file_name[(seperator+1) : len(file_name)]
 
     if file_type == "txt":
@@ -16,18 +20,20 @@ class Reader():
       self.__data = self.__read_traces()
 
     elif file_type == "csv":
-      logging.info("csv file")
+      logging.info("Opening csv file")
       self.__data = self.__read_csv()
 
     else:
-      logging.info("No valid file")
+      logging.warning("No valid file")
 
     if (self.__data is not None):
       self.__features = self.__data.shape[1]
-      self.__num_of_user = (np.amax(self.__data[:, 0]) + 1)
 
   def get_data(self):
     return self.__data
+
+  def get_features(self):
+    return self.__features
 
   def get_number_of_users(self):
     return self.__num_of_user
@@ -56,7 +62,7 @@ class Reader():
                   splitLine = np.array([int(i) for i in splitLine])
                   x.append(splitLine)
     except:
-      logging.info("Non existing txt file")
+      logging.warning("Non existing txt file")
       return
 
     x = np.array(x, dtype="float")
@@ -71,7 +77,7 @@ class Reader():
       data = np.delete(data, 0, 1 )
 
     except:
-      logging.info("Non existing csv file")
+      logging.warning("Non existing csv file")
       return
     return data
 

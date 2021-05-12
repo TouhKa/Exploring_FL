@@ -85,7 +85,7 @@ if __name__ == "__main__":
         port = sys.argv[3]
         logging.info("\nStarting Client {}\n".format(client_id))
     except:
-        logging.info("No valid arguments for client_id, folder, port")
+        logging.warning("No valid arguments for client_id, folder, port")
         exit()
 
     config = read_config()
