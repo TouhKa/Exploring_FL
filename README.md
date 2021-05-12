@@ -20,14 +20,17 @@ TODO Description
 - original dataset (app_usage_trace.txt):   N random Client_IDs
 - top_apps_non_iid.csv :                    N random client_IDs
 - top_apps_iid.csv :                        generates N clients over all entries of the dataset. 
-2. To create this subsets of Clients, run [Flower_Client_Manager.py]() with these parameters:
+2. To create this subsets of Clients, run [Flower_Client_Manager.py](https://github.com/TouhKa/Exploring_FL/blob/main/Flower/Flower_Client_Manager.py) with these parameters:
   * dataset name e.g. data.txt, data.csv
   * output folder
   * numer of clients to sample/create
 
-3. To run a Federated Training with Flower run [run.bat]() with these parameters:
+3. To run a Federated Training with Flower run [run.bat](https://github.com/TouhKa/Exploring_FL/blob/main/Flower/run.bat) with these parameters:
   * number of clients: equal to the output folder from step 2
-  * folder containing the id_file created in step 2
-
+  * folder containing the id_file created in step 2  <break>
+  
+ **Note**: If you want to use a lots of clients remove **/k** from [run.bat](https://github.com/TouhKa/Exploring_FL/blob/main/Flower/run.bat) <break> 
+ 
+ **Note**: Check your path of the python.exe and adjust it if necessary
 
 # TFF
