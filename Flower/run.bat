@@ -1,5 +1,5 @@
 @ECHO OFF   
-if [%2]==[] goto usage
+if [%2]==[] goto error
 if [%1]==[] if [%2]==[] goto error
 
 set id_file=_clients.txt
