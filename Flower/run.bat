@@ -9,10 +9,10 @@ echo %id_file%
 set id_folder=../data/Flower/%2/%id_file%
 echo %id_folder%
 
-START "server" CMD /k python Flower_Server.py  
+START "server" CMD /k python.exe Flower_Server.py  
 for /f "tokens=*" %%s in (%id_folder%) do (
   echo client %%s
-  START "client" CMD /k python %%s %2 "8080" 
+  START "client" CMD /k python.exe %%s %2 "8080" 
 )
 goto :eof
 
