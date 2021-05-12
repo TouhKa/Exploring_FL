@@ -12,7 +12,7 @@ echo %id_folder%
 START "server" CMD /k C:\Users\piass\Anaconda3\envs\projectarbeit\python.exe Flower_Server.py  
 for /f "tokens=*" %%s in (%id_folder%) do (
   echo client %%s
-  START "client" CMD /k C:\Users\piass\Anaconda3\envs\projectarbeit\python.exe Flower_Client.py %%s "app_traces" "8080" 
+  START "client" CMD /k C:\Users\piass\Anaconda3\envs\projectarbeit\python.exe Flower_Client.py %%s %2 "8080" 
 )
 goto :eof
 
