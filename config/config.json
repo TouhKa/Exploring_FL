@@ -6,7 +6,11 @@
    "OUT_DIR":"../out/",
    "BATCH_SIZE" : 64,
    "SHUFFLE_BUFFER" : 64,
-   "PREFETCH_BUFFER" : 10
- 
+   "PREFETCH_BUFFER" : 10,
+   "file_app_usages" : "App_usage_trace.txt",
+   "file_base_poi" : "base_poi.txt",
+   "file_merged" : "merged_traces.csv",
+   "file_top_apps" : "top_90_apps.csv",
+   "file_top_apps_IID" : "top_90_apps_IID.csv"
 
 }
