@@ -1,4 +1,5 @@
 import sys
+sys.path.append("../")
 import flwr as fl
 import tensorflow as tf
 import json

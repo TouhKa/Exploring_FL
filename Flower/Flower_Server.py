@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from typing import Optional, Tuple
+import sys
+sys.path.append("../")
 import flwr as fl
 import tensorflow as tf
 import json

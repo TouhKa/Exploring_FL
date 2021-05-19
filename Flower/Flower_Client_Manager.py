@@ -1,5 +1,6 @@
 import random
 import sys
+sys.path.append("../")
 import logging
 import pandas as pd
 import numpy as np
@@ -10,7 +11,7 @@ from Utils import Utils
 
 class Client_Manager:
     def __init__(self, file_name, out_folder, num_clients, just_IDs) -> None:
-        self.__data_dir = "../DATA/"
+        self.__data_dir = "../data/"
         self.__file_name = file_name
         self.__out_folder = out_folder
         self.__num_clients = num_clients
