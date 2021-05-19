@@ -8,6 +8,7 @@ class Reader():
     self.__file_name = file_name
     self.__num_of_user:int = 1
     self.__num_of_classes = 0
+    self.__features = 0
     try:
       seperator = file_name.index(".")
     except:
