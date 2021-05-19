@@ -1,5 +1,6 @@
 /data/**
 /out/**
+/logs/**
 
 **/.ipynb_checkpoints/**
 **/__pycache__/**
