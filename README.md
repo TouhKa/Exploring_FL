@@ -13,7 +13,8 @@ Used 3 of the total 21 possible features:
 - Traffic in bytes
 
 # Modified Datasets
-TODO Description
+Run ` iid_dataset.py ` to create an IID and a non-IID dataset of the 90% quantile of the most common apps
+
 
 # Flower
 1. With respect to finite resource limitations, Flower is trained with a choice of clients. These are chosen as follows:
@@ -34,3 +35,5 @@ TODO Description
  **Note**: Check your path of the python.exe and adjust it if necessary
 
 # TFF
+ 
+Comparison of TFF and normal TF
