@@ -13,14 +13,14 @@ Used 3 of the total 21 possible features:
 - Traffic in bytes
 
 # Modified Datasets
-Run ` iid_dataset.py ` to create an IID and a non-IID dataset of the 90% quantile of the most common apps
+Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/iid_dataset.py) to create an IID and a non-IID dataset of the 90% quantile of the most common apps. Hereafter called `top_apps_non_iid.csv` and `top_apps_iid.csv`.
 
 
 # Flower
 1. With respect to finite resource limitations, Flower is trained with a choice of clients. These are chosen as follows:
-- original dataset (app_usage_trace.txt):   N random Client_IDs
-- top_apps_non_iid.csv :                    N random client_IDs
-- top_apps_iid.csv :                        generates N clients over all entries of the dataset. 
+- original dataset (`app_usage_trace.txt`):   N random Client_IDs
+- `top_apps_non_iid.csv`:                    N random client_IDs
+- `top_apps_iid.csv`:                        generates N clients over all entries of the dataset. 
 2. To create this subsets of Clients, run [Flower_Client_Manager.py](https://github.com/TouhKa/Exploring_FL/blob/main/Flower/Flower_Client_Manager.py) with these parameters:
   * `dataset name` e.g. data.txt, data.csv
   * `output folder`
