@@ -13,15 +13,6 @@ def read_config():
         config = json.loads(json_file.read())
     return config
 
-# def get_eval_fn(model):
-#     """Return an evaluation function for server-side evaluation."""
-#     # The `evaluate` function will be called after every round
-#     def evaluate(weights: fl.common.Weights) -> Optional[Tuple[float, float]]:
-#         model.set_weights(weights)  # Update model with the latest parameters
-#         loss, accuracy = model.evaluate(x_val, y_val)
-#         return loss, accuracy
-#     return evaluate
-
 def main() -> None:
   config = read_config()
   model = FLModel(config["NUM_CLASSES"])
@@ -30,13 +21,11 @@ def main() -> None:
   metrics=[tf.keras.metrics.SparseCategoricalAccuracy()]
   model.compile(server_optimizer_fn, loss, metrics = [metrics])
 
-#Overwrite number of clients for fitting and evaluation
-#TODO get_eval_fn(model)
   strategy = fl.server.strategy.FedAvg(
       min_fit_clients=10,
       min_eval_clients=10,
       min_available_clients=10
-    #   eval_fn=get_eval_fn(model),
+
   )
   fl.server.start_server(
                           "localhost:8080",

@@ -21,40 +21,63 @@ class FLClient(fl.client.NumPyClient):
         self.epochs = epochs
         self.steps = epochs
         self.batch_size = batch_size
+        self.bn_weights = None
+        self.start = 2
+        self.end = 6
 
     def get_parameters(self):
-        return self.model.get_weights()
+        weights = self.model.get_weights()
+        if len(weights) > 7:
+            dense_weights = [weights[0], weights[1], weights[6], weights[7]]
+            return dense_weights
+        return weights
+
+    def set_model_weights(self, parameters):
+        new_weights = []
+        for weight in parameters[:self.start]:
+            new_weights.append(weight)
+        for weight in self.bn_weights:
+            new_weights.append(weight)
+        for weight in parameters[self.start:]:
+            new_weights.append(weight)
+        return new_weights
 
     def fit(self, parameters, config):
-        self.model.set_weights(parameters)
+        if len(parameters) == 4 :
+            self.model.set_weights(self.set_model_weights(parameters))
+        else:
+            self.model.set_weights(parameters)
         with tf.device('/gpu:0'):
             history = self.model.fit(
                 self.X_train,
                 self.y_train,
                 batch_size=self.batch_size,
                 epochs=self.epochs,
-                validation_split=0.2)
+                validation_split=0.2
+                )
 
         results = {
             "loss": history.history["loss"][0],
             "accuracy": history.history["sparse_categorical_accuracy"][0],
-            "top_5_accuracy":  history.history["sparse_top_k_categorical_accuracy"][0],
+            "top_10_accuracy":  history.history["sparse_top_k_categorical_accuracy"][0],
             "val_loss": history.history["val_loss"][0],
             "val_accuracy": history.history["val_sparse_categorical_accuracy"][0],
             "val_top_5_accuracy":  history.history["val_sparse_top_k_categorical_accuracy"][0],
         }
-
-        return self.model.get_weights(), len(self.X_train), results
+        temp_weights = self.model.get_weights()
+        self.bn_weights = temp_weights[self.start:self.end]
+        dense_weights =  [temp_weights[0], temp_weights[1], temp_weights[6], temp_weights[7]]
+        return dense_weights, len(self.X_train), results
 
     def evaluate(self, parameters, config):
-        self.model.set_weights(parameters)
+        self.model.set_weights(self.set_model_weights(parameters))
         with tf.device('/gpu:0'):
             loss, accuracy, top_k_acc= self.model.evaluate(
                                                 self.X_test,
                                                 self.y_test,
                                                 batch_size=self.batch_size,
                                                 steps=self.steps)
-        return loss, len(self.X_test), {"accuracy": accuracy, "top-5-acc": top_k_acc}
+        return loss, len(self.X_test), {"accuracy": accuracy, "top-10-acc": top_k_acc}
 
 def read_data(file_path):
 
@@ -90,23 +113,27 @@ if __name__ == "__main__":
         exit()
 
     config = read_config()
-    X_train = read_data(config["DATA_DIR"] \
+    X_train = read_data("../" \
+                + config["DATA_DIR"] \
                 + folder
                 + "X_train_" \
                 +  client_id \
                 + ".csv")
-    y_train = read_data(config["DATA_DIR"] \
+    y_train = read_data("../" \
+                + config["DATA_DIR"] \
                 + folder
                 + "y_train_" \
                 +  client_id \
                 + ".csv")
 
-    X_test = read_data(config["DATA_DIR"] \
+    X_test = read_data("../" \
+                + config["DATA_DIR"] \
                 + folder
                 + "X_test_" \
                 + client_id \
                 + ".csv")
-    y_test = read_data(config["DATA_DIR"] \
+    y_test = read_data("../" \
+                + config["DATA_DIR"] \
                 + folder
                 + "y_test_" \
                 +  client_id \
@@ -115,7 +142,7 @@ if __name__ == "__main__":
     optimizer = tf.keras.optimizers.SGD(learning_rate=0.5, momentum=0.5, nesterov=True)
     loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     metrics = [ tf.keras.metrics.SparseCategoricalAccuracy(),
-                tf.keras.metrics.SparseTopKCategoricalAccuracy(k=5)]
+                tf.keras.metrics.SparseTopKCategoricalAccuracy(k=10)]
     model.compile(optimizer, loss, metrics = [metrics])
 
     client = fl.client.start_numpy_client("localhost:" + port,
