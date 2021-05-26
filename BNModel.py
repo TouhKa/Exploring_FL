@@ -1,7 +1,7 @@
 import tensorflow as tf
-class FLModel(tf.keras.Model):
+class BNModel(tf.keras.Model):
   def __init__(self, number_of_classes):
-    super(FLModel, self).__init__()
+    super(BNModel, self).__init__()
     tf.keras.backend.set_floatx('float32')
     initializer = tf.keras.initializers.Zeros()
     self.dense1 = tf.keras.layers.Dense(500, activation=tf.nn.relu, kernel_initializer=initializer)
