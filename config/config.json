@@ -12,6 +12,10 @@
    "file_base_poi" : "base_poi.txt",
    "file_merged" : "merged_traces.csv",
    "file_top_apps" : "top_90_apps.csv",
-   "file_top_apps_IID" : "top_90_apps_IID.csv"
-
+   "file_top_apps_IID" : "top_90_apps_IID.csv",
+   "file_10_infected": "10_infected.csv",
+   "file_10_infected_shuffled": "10_infected_shuffled.csv",
+   "file_20000_infected" : "20000_infected.csv",
+   "file_cosphere":  "Cosphere_small.csv",
+   "file_cosphere_cropped": "Cosphere_cropped.csv"
 }
