@@ -1,5 +1,10 @@
 {
-   "NUM_CLASSES":3996,
+   "num_classes_app_usages":3996,
+   "num_classes_top_apps":171,
+   "num_classes_infected":3,
+   "num_classes_infected_shuffled":3,
+   "num_classes_cosphere":9972,
+   "num_classes_cosphere_cropped":9972,
    "CLIENTS":10,
    "EPOCHS":10,
    "DATA_DIR":"data/",
@@ -9,13 +14,9 @@
    "SHUFFLE_BUFFER" : 64,
    "PREFETCH_BUFFER" : 10,
    "file_app_usages" : "App_usage_trace.txt",
-   "file_base_poi" : "base_poi.txt",
-   "file_merged" : "merged_traces.csv",
    "file_top_apps" : "top_90_apps.csv",
-   "file_top_apps_IID" : "top_90_apps_IID.csv",
    "file_10_infected": "10_infected.csv",
    "file_10_infected_shuffled": "10_infected_shuffled.csv",
-   "file_20000_infected" : "20000_infected.csv",
-   "file_cosphere":  "Cosphere_small.csv",
+   "file_cosphere":  "Cosphere.csv",
    "file_cosphere_cropped": "Cosphere_cropped.csv"
 }
