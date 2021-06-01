@@ -3,7 +3,7 @@ sys.path.append("../")
 import flwr as fl
 import tensorflow as tf
 import json
-from  FLModel import FLModel
+from  model.FLModel import FLModel
 import numpy as np
 import pandas as pd
 import logging

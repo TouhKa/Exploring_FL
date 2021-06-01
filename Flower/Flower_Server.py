@@ -4,7 +4,7 @@ sys.path.append("../")
 import flwr as fl
 import tensorflow as tf
 import json
-from FLModel import FLModel
+from model.FLModel import FLModel
 
 def read_config():
     config_file = "../config/config.json"
