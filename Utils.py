@@ -1,8 +1,6 @@
 import numpy as np
-import logging
 class Utils:
-    def __init__(self) -> None:
-        logging.basicConfig(filename='../logs/Utils.log', level=logging.DEBUG)
+
     def map_ids(self, x):
         new_ids = [float(i) for i in range(871 + 1)]
         old_ids = np.unique(x[:, 0])
@@ -34,5 +32,5 @@ class Utils:
                 x_new = np.insert(x, 0, client_id_index, axis=1)
                 return x_new
             else:
-                logging.debug(f"Data length {len(x)} \nIndicees length: {len(client_id_index)}")
-                logging.info("Formatation error: Could not generate Clients")
+                print(f"Data length {len(x)} \nIndicees length: {len(client_id_index)}")
+                print("Formatation error: Could not generate Clients")

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import logging
 class Reader():
-  def __init__(self, file_path:str, file_name:str):
+  def __init__(self, file_path:str, file_name:str, delete_index:bool=True):
     self.__data = None
     self.__data_dir = file_path
     self.__file_name = file_name
@@ -22,7 +22,7 @@ class Reader():
 
     elif file_type == "csv":
       logging.info("Opening csv file")
-      self.__data = self.__read_csv()
+      self.__data = self.__read_csv(delete_index)
 
     else:
       logging.warning("No valid file")
@@ -69,13 +69,14 @@ class Reader():
     x = np.array(x, dtype="float")
     return x
 
-  def __read_csv(self):
+  def __read_csv(self, delete_index = True):
     try:
       data = pd.read_csv((self.__data_dir + self.__file_name), encoding="utf8", delimiter=",")
       logging.debug(data.info)
       data = data.to_numpy(dtype=float)
       #drop index column
-      data = np.delete(data, 0, 1 )
+      if delete_index:
+          data = np.delete(data, 0, 1 )
 
     except:
       logging.warning("Non existing csv file")
