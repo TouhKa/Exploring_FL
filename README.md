@@ -13,7 +13,7 @@ Used 3 of the total 21 possible features to predict the corresponding 'App_ID':
 - Traffic in bytes
 
 #### Modified Datasets
-Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/data/IID_Dataset_Generator.py) to create an IID and a non-IID dataset of the 90% quantile of the most common apps. Hereafter called `top_apps_non_iid.csv` and `top_apps_iid.csv`.
+Run [IID_Dataset_Generator](https://github.com/TouhKa/Exploring_FL/blob/main/data/IID_Dataset_Generator.py) to create an IID and a non-IID dataset of the 90% quantile of the most common apps. Hereafter called `top_apps_non_iid.csv` and `top_apps_iid.csv`.
 
 ## Dataset 2
 The second dataset used is [CoSphere(Communication Context for Adaptive Mobile Applications) dataset](https://crawdad.org/novay/cosphere/20090501/) containing thenetwork traces on the personal mobile devices of 11 trial participants over a period of approximately one month in the February/March 2007 time frame.
@@ -23,7 +23,7 @@ Used 3 of all features to predict 'BSSID':
 - LAC
 
 ## Dataset 3
-Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/data/Dataset_Generator.ipynb) to create a dataset that generates nominal person data and infection status from a determinable normal distribution. Hereafter called `Infected.csv` and `Infected_shuffled.csv`.
+Run [Dataset_Generator](https://github.com/TouhKa/Exploring_FL/blob/main/data/Dataset_Generator.ipynb) to create a dataset that generates nominal person data and infection status from a determinable normal distribution. Hereafter called `Infected.csv` and `Infected_shuffled.csv`.
 
 # Flower
 1. With respect to finite resource limitations, Flower is trained with a choice of clients. These are chosen as follows:
