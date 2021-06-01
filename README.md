@@ -1,20 +1,29 @@
 # Exploring_FL
 First Steps in Federated Learning with [Tensorflow Federated](https://www.tensorflow.org/federated) and [Flower](https://flower.dev/).
-
+## Dataset 1
 The dataset is from the paper [App Usage Behavior Modeling and Prediction](http://fi.ee.tsinghua.edu.cn/appusage/), containing four files:
 - App_usage_trace
 - App2Category
 - base_poi
 - Categorys
 
-Used 3 of the total 21 possible features:
+Used 3 of the total 21 possible features to predict the corresponding 'App_ID':
 - Timestamp
 - Basestation Id
 - Traffic in bytes
 
 # Modified Datasets
-Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/iid_dataset.py) to create an IID and a non-IID dataset of the 90% quantile of the most common apps. Hereafter called `top_apps_non_iid.csv` and `top_apps_iid.csv`.
+Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/data/IID_Dataset_Generator.py) to create an IID and a non-IID dataset of the 90% quantile of the most common apps. Hereafter called `top_apps_non_iid.csv` and `top_apps_iid.csv`.
 
+## Dataset 2
+The second dataset used is [CoSphere(Communication Context for Adaptive Mobile Applications) dataset](https://crawdad.org/novay/cosphere/20090501/) containing thenetwork traces on the personal mobile devices of 11 trial participants over a period of approximately one month in the February/March 2007 time frame.
+Used 3 of all features to predict 'BSSID':
+- Timestamp
+- CopID
+- LAC
+
+## Dataset 3
+Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/data/Dataset_Generator.ipynb) to create a dataset that generates nominal person data and infection status from a determinable normal distribution. Hereafter called `Infected.csv` and `Infected_shuffled.csv`.
 
 # Flower
 1. With respect to finite resource limitations, Flower is trained with a choice of clients. These are chosen as follows:
@@ -36,4 +45,4 @@ Run [iid_dataset.py](https://github.com/TouhKa/Exploring_FL/blob/main/iid_datase
 
 # TFF
  
-Comparison of TFF and normal TF
+Comparison of TFF and normal TF for dataset 1, 2 and 3. Please update the name and number of label classes for the desired record according to the [config](https://github.com/TouhKa/Exploring_FL/blob/main/config/config.json)
