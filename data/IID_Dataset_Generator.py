@@ -2,9 +2,7 @@
 import pandas as pd
 import numpy as np
 
-DATA_DIR = "./data/"
-OUT_DIR = "./out/"
-
+DATA_DIR = "./"
 file_app_usages = "App_usage_trace.txt"
 Non_IID_file_name = "top_90_apps.csv"
 IID_file_name = "top_90_apps_IID.csv"
@@ -18,7 +16,7 @@ def read_traces():
           if idx != 0:
               splitLine = np.array([int(i) for i in splitLine])
               x.append(splitLine)
-            
+
   x = np.array(x, dtype="int")
   return x
 def main():
@@ -55,9 +53,8 @@ def main():
     for id in idx:
       random_idx.append(id)
 
-  for id in df_syntetic.loc[df_syntetic["App_ID"] == syntetic_ids[-1]].index.values: 
+  for id in df_syntetic.loc[df_syntetic["App_ID"] == syntetic_ids[-1]].index.values:
     random_idx.append(id)
-    
   random_idx.sort()
 
   df_syntetic_new = df_syntetic.iloc[random_idx]
