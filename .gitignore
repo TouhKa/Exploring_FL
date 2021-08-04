@@ -1,6 +1,7 @@
 /data/**
 /out/**
 /logs/**
+/TFF/mlruns/**
 
 **/.ipynb_checkpoints/**
 **/__pycache__/**
