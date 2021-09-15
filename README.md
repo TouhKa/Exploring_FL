@@ -3,7 +3,7 @@ First Steps in Federated Learning with [Tensorflow Federated](https://www.tensor
 The main part was implemented with TFF. A first approach with Flower is included, see explanation below, but was not pursued further.
 
 ## TFF (Main part)
-This contains a Jupyter notebook [see here]() to compare different setups. The main goal is to 
+This contains a Jupyter notebook [see here](https://github.com/TouhKa/Exploring_FL/blob/cc/TFF/Centralized_vs_Federated_Trainer.ipynb) to compare different setups. The main goal is to 
 
 1. analyze the impact of non--IID--data (see dataset description 1 and 3) on certain metrics
 2. analyze the impact of lossy compression with quantization on certain metrics. 
